@@ -26,24 +26,24 @@ Returns a list of matched records
 
 ## Model schemas
 1. ads_items
-   - id [int] a record identificator
-   - id_user [int] an owner identificator
-   - id_ads_category [int] a category identificator to which it belongs
-   - title [text] title of a record
-   - picture_url [text] a set of picture ref links for an ad  
-   - content [text] a description for an ad
-   - date_publication [timestamp] a timestamp for publication date\time
-   - item_price [int] an item price
-   - location [text] an ad location 
-   - tel_id [text] telegram id to reach out
-   - inst_id [text] instagram id to reach out
-   - wa_id [text] whatsapp phone number to reach out
-   - phone [text] phone number
+   - `id` [int] a record identificator
+   - `id_user` [int] an owner identificator
+   - `id_ads_category` [int] a category identificator to which it belongs
+   - `title` [text] title of a record
+   - `picture_url` [text] a set of picture ref links for an ad  
+   - `content` [text] a description for an ad
+   - `date_publication` [timestamp] a timestamp for publication date\time
+   - `item_price` [int] an item price
+   - `location` [text] an ad location 
+   - `tel_id` [text] telegram id to reach out
+   - `inst_id` [text] instagram id to reach out
+   - `wa_id` [text] whatsapp phone number to reach out
+   - `phone` [text] phone number
 2. ads_categories
-   - id [int] a record identificator
-   - name [text] a category name
-   - is_custom [bool] flag whether the category created by clients themselves
-   - picture_url [text] ref link to category picture
+   - `id` [int] a record identificator
+   - `name` [text] a category name
+   - `is_custom` [bool] flag whether the category created by clients themselves
+   - `picture_url` [text] ref link to category picture
   
 An example of a json body for `POST`, `PUT`, and `DELETE` requests:
 `
