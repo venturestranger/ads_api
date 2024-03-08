@@ -1,6 +1,7 @@
 An API for ads microservice.
 
 ## Routing:
+1. API V1
 - `/rest/v1/auth` - for authorization 
 - `/rest/v1/ads_items` - a view for ads items
 - `/rest/v1/ads_categories` - a view for ads categories
@@ -29,16 +30,16 @@ Returns a list of matched records
    - `id` [int] a record identificator
    - `id_user` [int] an owner identificator
    - `id_ads_category` [int] a category identificator to which it belongs
-   - `title` [text] title of a record
+   - `title` [text] the title of a record
    - `picture_url` [text] a set of picture ref links for an ad  
    - `content` [text] a description for an ad
-   - `date_publication` [timestamp] a timestamp for publication date\time
+   - `date_publication` [timestamp] a timestamp for a publication date\time
    - `item_price` [int] an item price
    - `location` [text] an ad location 
-   - `tel_id` [text] telegram id to reach out
-   - `inst_id` [text] instagram id to reach out
-   - `wa_id` [text] whatsapp phone number to reach out
-   - `phone` [text] phone number
+   - `tel_id` [text] a telegram id to reach out
+   - `inst_id` [text] an instagram id to reach out
+   - `wa_id` [text] a whatsapp phone number to reach out
+   - `phone` [text] a phone number
 2. ads_categories
    - `id` [int] a record identificator
    - `name` [text] a category name
