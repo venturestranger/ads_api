@@ -102,3 +102,54 @@ class AdsCategoriesV1(web.View):
 			return web.Response(status=400, text='Bad Request')
 		else:
 			return web.Response(status=200, text='OK')
+
+class UserMarkAdV1(web.View):
+	async def get(self):
+		query = build_query('select', 'user_mark_ad', self.request.query)
+		db = self.request.config_dict['db']
+		try:
+			rets = await db.execute(query, fetch=True)
+			for i in range(len(rets)):
+				rets[i] = dict(rets[i])
+		except Exception as e:
+			return web.Response(status=400, text='Bad Request')
+		else:
+			return web.json_response(rets)
+	
+	async def post(self):
+		data = dict(self.request.query)
+		body = await self.request.json()
+		data.update(body)
+
+		query = build_query('insert', 'user_mark_ad', data)
+		db = self.request.config_dict['db']
+		try:
+			await db.execute(query)
+		except:
+			return web.Response(status=400, text='Bad Request')
+		else:
+			return web.Response(status=200, text='OK')
+	
+	async def put(self):
+		data = dict(self.request.query)
+		body = await self.request.json()
+		data.update(body)
+
+		query = build_query('update', 'user_mark_ad', data)
+		db = self.request.config_dict['db']
+		try:
+			await db.execute(query)
+		except:
+			return web.Response(status=400, text='Bad Request')
+		else:
+			return web.Response(status=200, text='OK')
+
+	async def delete(self):
+		query = build_query('delete', 'user_mark_ad', self.request.query)
+		db = self.request.config_dict['db']
+		try:
+			await db.execute(query)
+		except:
+			return web.Response(status=400, text='Bad Request')
+		else:
+			return web.Response(status=200, text='OK')

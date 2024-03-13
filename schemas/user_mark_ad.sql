@@ -1,0 +1,11 @@
+CREATE TABLE user_mark_ad (
+	id BIGSERIAL PRIMARY KEY,
+	id_user BIGINT NOT NULL,
+	id_ad BIGINT NOT NULL,
+	date TIMESTAMP NOT NULL,
+	CONSTRAINT fk_ads_items_id
+		FOREIGN KEY (id_ad)
+		REFERENCES ads_items (id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
+)
