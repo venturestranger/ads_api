@@ -45,6 +45,11 @@ Returns a list of matched records
    - `name` [text] a category name
    - `is_custom` [bool] flag whether the category created by clients themselves
    - `picture_url` [text] ref link to category picture
+3. user_mark_ad
+   - `id` [int] a record identificator
+   - `id_ad` [int] an id of the marked ad
+   - `id_user` [int] an id of the user marking
+   - `date` [timtestamp] ref link to category picture
   
 An example of a json body for `POST`, `PUT`, and `DELETE` requests:
 `
