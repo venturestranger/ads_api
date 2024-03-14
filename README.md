@@ -47,9 +47,9 @@ Returns a list of matched records
    - `picture_url` [text] ref link to category picture
 3. user_mark_ad
    - `id` [int] a record identificator
-   - `id_ad` [int] an id of the marked ad
    - `id_user` [int] an id of the user marking
-   - `date` [timtestamp] ref link to category picture
+   - `id_ad` [int] an id of the marked ad
+   - `date` [timestamp] a date when an ad was marked
   
 An example of a json body for `POST`, `PUT`, and `DELETE` requests:
 `
