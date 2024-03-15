@@ -1,3 +1,13 @@
+# Headers for responses
+headers = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "*",
+	"Access-Control-Allow-Headers": "*",
+	"Access-Control-Max-Age": "86400"
+}
+
+
+# A logging module
 import logging
 
 logger = logging.getLogger(__name__)
@@ -18,6 +28,7 @@ def log(msg, status='error'):
 		logger.error(msg)
 
 
+# Query builder
 def build_query(query_type, table, query):
 	spec = ['order_by_', 'order_way_', 'limit_', 'offset_']
 	aggr = ['key_', 'func_']
@@ -83,6 +94,7 @@ def build_query(query_type, table, query):
 		prefix += ', '.join(prefs)
 		suffix += ', '.join(sufs) + ')'
 
+	print(prefix + suffix)
 	return prefix + suffix
 
 if __name__=="__main__":

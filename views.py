@@ -1,5 +1,6 @@
 from aiohttp import web
 from utils import build_query
+from utils import headers
 
 class AdsItemsV1(web.View):
 	async def get(self):
@@ -10,9 +11,9 @@ class AdsItemsV1(web.View):
 			for i in range(len(rets)):
 				rets[i] = dict(rets[i])
 		except Exception as e:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.json_response(rets)
+			return web.json_response(rets, headers=headers)
 	
 	async def post(self):
 		data = dict(self.request.query)
@@ -24,9 +25,9 @@ class AdsItemsV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 	
 	async def put(self):
 		data = dict(self.request.query)
@@ -38,9 +39,9 @@ class AdsItemsV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 
 	async def delete(self):
 		query = build_query('delete', 'ads_items', self.request.query)
@@ -48,9 +49,9 @@ class AdsItemsV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 
 class AdsCategoriesV1(web.View):
 	async def get(self):
@@ -61,9 +62,9 @@ class AdsCategoriesV1(web.View):
 			for i in range(len(rets)):
 				rets[i] = dict(rets[i])
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.json_response(rets)
+			return web.json_response(rets, headers=headers)
 	
 	async def post(self):
 		data = dict(self.request.query)
@@ -75,9 +76,9 @@ class AdsCategoriesV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 	
 	async def put(self):
 		data = dict(self.request.query)
@@ -89,9 +90,9 @@ class AdsCategoriesV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 
 	async def delete(self):
 		query = build_query('delete', 'ads_categories', self.request.query)
@@ -99,9 +100,9 @@ class AdsCategoriesV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 
 class UserMarkAdV1(web.View):
 	async def get(self):
@@ -112,9 +113,9 @@ class UserMarkAdV1(web.View):
 			for i in range(len(rets)):
 				rets[i] = dict(rets[i])
 		except Exception as e:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.json_response(rets)
+			return web.json_response(rets, headers=headers)
 	
 	async def post(self):
 		data = dict(self.request.query)
@@ -126,9 +127,9 @@ class UserMarkAdV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 	
 	async def put(self):
 		data = dict(self.request.query)
@@ -140,9 +141,9 @@ class UserMarkAdV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)
 
 	async def delete(self):
 		query = build_query('delete', 'user_mark_ad', self.request.query)
@@ -150,6 +151,6 @@ class UserMarkAdV1(web.View):
 		try:
 			await db.execute(query)
 		except:
-			return web.Response(status=400, text='Bad Request')
+			return web.Response(status=400, text='Bad Request', headers=headers)
 		else:
-			return web.Response(status=200, text='OK')
+			return web.Response(status=200, text='OK', headers=headers)

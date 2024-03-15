@@ -7,6 +7,7 @@ from views import AdsCategoriesV1
 from views import UserMarkAdV1
 from handlers import auth_handler_v1
 from middlewares import auth_middleware_v1
+from middlewares import cors_middleware_v1
 
 config = configs['dev']
 routes = web.RouteTableDef()
@@ -19,7 +20,6 @@ if __name__=='__main__':
 
 	# API versioning
 	APIv1 = web.Application()
-	APIv1.middlewares.append(auth_middleware_v1)
 	APIv1.router.add_get('/auth', auth_handler_v1)
 	APIv1.router.add_view('/ads_items', AdsItemsV1)
 	APIv1.router.add_view('/ads_categories', AdsCategoriesV1)
@@ -27,7 +27,8 @@ if __name__=='__main__':
 	app.add_subapp('/api/rest/v1', APIv1)
 
 	# cors initialization
-	app.middlewares.append(cors_middleware())
+	app.middlewares.append(cors_middleware_v1)
+	app.middlewares.append(auth_middleware_v1)
 
 	if config.CONFIG == 'dev':
 		web.run_app(app, port=config.PORT)
