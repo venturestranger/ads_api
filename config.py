@@ -2,7 +2,6 @@ class Config:
 	API_KEY = 'domain'
 	SECRET_KEY = 'domain'
 	ISSUER = 'domain'
-	CONFIG = 'dev'
 	PORT = 5001
 	DB_PORT = 5432
 	DB_USER = 'bogdanyakupov'
@@ -11,7 +10,7 @@ class Config:
 	DB_DBNAME = 'home'
 
 class Dev(Config):
-	pass
+	CONFIG_NAME = 'dev'
 
 configs = {
 	'dev': Dev

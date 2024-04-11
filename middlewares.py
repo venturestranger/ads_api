@@ -7,7 +7,6 @@ async def cors_middleware_v1(request, handler):
 	if request.method == 'OPTIONS':
 		return web.Response(status=200, text='OK', headers=headers)
 	else:
-		print('here')
 		return await handler(request)
 
 @web.middleware
@@ -17,9 +16,6 @@ async def auth_middleware_v1(request, handler):
 		return await handler(request)
 
 	config = request.config_dict['config']
-
-	data = request.headers.get('Authorization', 'Bearer _').split()[1]
-	print(data, request.headers)
 
 	try:
 		payload = jwt.decode(request.headers.get('Authorization', 'Bearer _').split()[1], config.SECRET_KEY, algorithms=['HS512'])

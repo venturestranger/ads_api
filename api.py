@@ -5,6 +5,7 @@ from db_driver import Driver
 from views import AdsItemsV1
 from views import AdsCategoriesV1
 from views import UserMarkAdV1
+from views import AdsValidationV1
 from handlers import auth_handler_v1
 from middlewares import auth_middleware_v1
 from middlewares import cors_middleware_v1
@@ -24,11 +25,12 @@ if __name__=='__main__':
 	APIv1.router.add_view('/ads_items', AdsItemsV1)
 	APIv1.router.add_view('/ads_categories', AdsCategoriesV1)
 	APIv1.router.add_view('/user_mark_ad', UserMarkAdV1)
+	APIv1.router.add_view('/ads_validation', AdsValidationV1)
 	app.add_subapp('/api/rest/v1', APIv1)
 
 	# cors initialization
 	app.middlewares.append(cors_middleware_v1)
 	app.middlewares.append(auth_middleware_v1)
 
-	if config.CONFIG == 'dev':
+	if config.CONFIG_NAME == 'dev':
 		web.run_app(app, port=config.PORT)
