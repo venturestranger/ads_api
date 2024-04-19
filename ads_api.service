@@ -1,0 +1,14 @@
+[Unit]
+Description=ADS service API
+After=network.target
+
+[Service]
+Type=simple
+User=debian
+WorkingDirectory=/home/debian/kstnws/ads_api/
+ExecStart=sh -c "/home/debian/.local/bin/gunicorn api:app_factory --bind localhost:5001 --worker-class aiohttp.GunicornWebWorker"
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target

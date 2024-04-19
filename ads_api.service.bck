@@ -1,0 +1,14 @@
+[Unit]
+Description=ADS service API
+After=network.target
+
+[Service]
+Type=simple
+User=debian
+WorkingDirectory=/home/debian/kstnws/ads_api/
+ExecStart=/home/debian/.config/python/bin/python3.10 /home/debian/kstnws/ads_api/api.py
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
