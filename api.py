@@ -1,5 +1,4 @@
 from aiohttp import web
-from aiohttp_middlewares.cors import cors_middleware
 from config import configs
 from db_driver import Driver
 from views import AdsItemsV1
@@ -15,7 +14,6 @@ async def app_factory():
 	config = configs['prod']
 	db = Driver(config)
 
-	routes = web.RouteTableDef()
 	app = web.Application()
 
 	app['db'] = db
