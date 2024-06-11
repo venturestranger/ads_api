@@ -28,8 +28,20 @@ def log(msg, status='error'):
 		logger.error(msg)
 
 
+# Query sanitizer
+def sanitize(dct: dict) -> dict:
+	data = {}
+	prune = lambda x: re.sub(r"[^a-zа-яA-ZА-Я0-1\_\ ]+", '', x)
+
+	for key, item in dct.items():
+		data.update({prune(key): prune(item)})
+
+	return data
+
 # Query builder
 def build_query(query_type, table, query):
+	query = sanitize(query)
+
 	spec = ['order_by_', 'order_way_', 'limit_', 'offset_']
 	aggr = ['key_', 'func_']
 
