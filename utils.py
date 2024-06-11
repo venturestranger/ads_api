@@ -1,3 +1,6 @@
+import re
+
+
 # Headers for responses
 headers = {
 	"Access-Control-Allow-Origin": "*",
@@ -31,10 +34,10 @@ def log(msg, status='error'):
 # Query sanitizer
 def sanitize(dct: dict) -> dict:
 	data = {}
-	prune = lambda x: re.sub(r"[^a-zа-яA-ZА-Я0-1\_\ ]+", '', x)
+	prune = lambda x: re.sub(r"[^a-zа-яA-ZА-Я0-9\*\#\_\:\;\$\.\ ]+", '', x)
 
 	for key, item in dct.items():
-		data.update({prune(key): prune(item)})
+		data.update({prune(str(key)): prune(str(item))})
 
 	return data
 
